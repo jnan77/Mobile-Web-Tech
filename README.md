@@ -6,32 +6,17 @@
 筛选了一些基础知识和新的知识,去掉了一些老旧的方案.定期更新.
 
 
-## 一篇webapp开发的最佳实践与中文总结
 
-[原文](http://blog.forecast.io/its-not-a-web-app-its-an-app-you-install-from-the-web/)
-
-[当前 WEB APP 开发的最佳实践](http://lyric.im/best-practice-for-web-app-development)
-
-
-##来自[maxzhang](https://github.com/maxzhang "ava")的一些移动端经验总结干货
+## 来自[maxzhang](https://github.com/maxzhang "ava")的一些移动端经验总结干货
 
 [移动Web单页应用开发实践——页面结构化](https://github.com/maxzhang/maxzhang.github.com/issues/8 "ava")
 
 [移动Web产品前端开发口诀——“快”](https://github.com/maxzhang/maxzhang.github.com/issues/1 "ava")
 
-[移动Web开发，4行代码检测浏览器是否支持position:fixed](https://github.com/maxzhang/maxzhang.github.com/issues/7 "ava")
-
-[使用border-image实现类似iOS7的1px底边](https://github.com/maxzhang/maxzhang.github.com/issues/4 "ava")
-
-[移动端web页面使用position:fixed问题总结](https://github.com/maxzhang/maxzhang.github.com/issues/2 "ava")
-
-[移动Web开发实践——解决position:fixed自适应BUG](https://github.com/maxzhang/maxzhang.github.com/issues/11 "ava")
-
 [移动手机浏览器m3u8格式视频流播放支持程度测试](https://github.com/maxzhang/maxzhang.github.com/issues/19 "ava")
 
 
-
-##本资料很多引用了指尖上的js系列，在此向作者表示感谢
+## 本资料很多引用了指尖上的js系列，在此向作者表示感谢
 
 [对于Touch的处理](http://www.cnblogs.com/pifoo/archive/2011/05/23/webkit-touch-event-1.html "article1")
 
@@ -43,21 +28,16 @@
 meta标签，这些meta标签在开发webapp时起到非常重要的作用
 
 ```html
-<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" name="viewport" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="black" name="apple-mobile-web-app-status-bar-style" />
 <meta content="telephone=no" name="format-detection" />
 ```
 
- 
-
 第一个meta标签表示：强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览；
-*尤其要注意的是content里多个属性的设置一定要用分号+空格来隔开，如果不规范将不会起作用。*
 
-注意根据[public_00](http://www.weibo.com/avajayam "ava")提供的资料补充，content使用分号作为分隔，在老的浏览器是支持的，但不是规范写法。
 规范的写法应该是使用逗号分隔，参考:
 [tip1](http://developer.android.com/guide/webapps/targeting.html) | [tip2](http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html)
-
 
 
 其中：
@@ -71,17 +51,8 @@ meta标签，这些meta标签在开发webapp时起到非常重要的作用
 第三个meta标签也是iphone的私有标签，它指定的iphone中safari顶端的状态条的样式；
 第四个meta标签表示：告诉设备忽略将页面中的数字识别为电话号码
 
-在设置了initial-scale=1 之后，我们终于可以以1:1 的比例进行页面设计了。
-关于viewport，还有一个很重要的概念是：iphone 的safari 浏览器完全没有滚动条，而且不是简单的“隐藏滚动条”，
-是根本没有这个功能。iphone 的safari 浏览器实际上从一开始就完整显示了这个网页，然后用viewport 查看其中的一部分。
-当你用手指拖动时，其实拖的不是页面，而是viewport。浏览器行为的改变不止是滚动条，交互事件也跟普通桌面不一样。
-(请参考：指尖的下JS 系列文章)
 
-##其中viewport相关的知识也可以参考大漠的文章
-
-[此像素非彼像素](http://www.w3cplus.com/css/A-pixel-is-not-a-pixel-is-not-a-pixel.html "pixel")
-
-##点击与click事件
+## 点击与click事件
 
 对于a标记的点击导航，默认是在onclick事件中处理的。而移动客户端对onclick的响应相比PC浏览器有着明显的几百毫秒延迟。
 
@@ -151,8 +122,8 @@ body{-webkit-overflow-scrolling: touch;}
 ##样式表:
 
 ```html
-<link rel=”apple-touch-startup-image” href=”startup.png” /> // 设置开始页面图片
-<link rel=”apple-touch-icon” href=”iphon_tetris_icon.png”/> // 在设置书签的时候可以显示好看的图标
+<link rel="apple-touch-startup-image" href="startup.png" /> // 设置开始页面图片
+<link rel="apple-touch-icon" href="iphon_tetris_icon.png"/> // 在设置书签的时候可以显示好看的图标
 <link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css">    // 肖像模式样式
 <link rel="stylesheet" media="all and (orientation:landscape)"href="landscape.css"   // 风景模式样式
 
@@ -185,10 +156,10 @@ body{-webkit-overflow-scrolling: touch;}
 * gestureend
 
 ##屏幕旋转事件
-* onorientationchange    
+* onorientationchange
 
 ##检测触摸屏幕的手指何时改变方向
-* orientationchange      
+* orientationchange
 
 ##touch事件支持的相关属性
 
@@ -237,16 +208,6 @@ addEventListener('load', function(){
 	window.onorientationchange = orientationChange;
 });
 ```
- 
-
-##隐藏地址栏 & 处理事件的时候，防止滚动条出现：
-
-```js
-// 隐藏地址栏  & 处理事件的时候 ，防止滚动条出现
-addEventListener('load', function(){
-		setTimeout(function(){ window.scrollTo(0, 1); }, 100);
-});
-```
 
 ##双手指滑动事件：
 
@@ -261,7 +222,7 @@ function twoFingerScroll(ev) {
 };
 ```
 
-##判断是否为iPhone：
+## 判断是否为iPhone：
 
 ```js
 // 判断是否为 iPhone ：
@@ -270,7 +231,7 @@ function isAppleMobile() {
 };
 ```
 
-##localStorage:
+## localStorage:
 
 ```js
 var v = localStorage.getItem('n') ? localStorage.getItem('n') : ""; // 如果名称是  n 的数据存在 ，则将其读出 ，赋予变量  v  。
@@ -278,7 +239,7 @@ localStorage.setItem('n', v); // 写入名称为 n、值为  v  的数据
 localStorage.removeItem('n'); // 删除名称为  n  的数据
 ```
 
-##使用特殊链接：
+## 使用特殊链接：
 如果你关闭自动识别后 ，又希望某些电话号码能够链接到 iPhone 的拨号功能 ，那么可以通过这样来声明电话链接 ,
 
 ```html 
@@ -288,18 +249,12 @@ localStorage.removeItem('n'); // 删除名称为  n  的数据
 
 或用于单元格：
 
-```html 
+```html
 <td onclick="location.href='tel:122'"></td>
 ```
-##自动大写与自动修正
-要关闭这两项功能，可以通过autocapitalize 与autocorrect 这两个选项：
 
-```html 
-<input type="text" autocapitalize="off" autocorrect="off" />
-```
- 
 ##WebKit CSS:
-①“盒模型”的具体描述性质的包围盒块内容，包括边界，填充等等。
+“盒模型”的具体描述性质的包围盒块内容，包括边界，填充等等。
 
 ```
 -webkit-border-bottom-left-radius: radius;
@@ -315,15 +270,8 @@ localStorage.removeItem('n'); // 删除名称为  n  的数据
 ```
  
 
-②“视觉格式化模型”描述性质，确定了位置和大小的块元素。
 
-```
-direction: rtl
-unicode-bidi: bidi-override; 常量：bidi-override/embed/normal
-```
- 
-
-③“视觉效果”描述属性，调整的视觉效果块内容，包括溢出行为，调整行为，能见度，动画，变换，和过渡。
+“视觉效果”描述属性，调整的视觉效果块内容，包括溢出行为，调整行为，能见度，动画，变换，和过渡。
 
 ```
 clip: rect(10px, 5px, 10px, 5px)
@@ -343,7 +291,7 @@ from(transparent), color-stop(0.5, transparent), to(white));
 ```
  
 
-④“生成的内容，自动编号，并列出”描述属性，允许您更改内容的一个组成部分，创建自动编号的章节和标题，和操纵的风格清单的内容。
+“生成的内容，自动编号，并列出”描述属性，允许您更改内容的一个组成部分，创建自动编号的章节和标题，和操纵的风格清单的内容。
 
 ```
 content: “Item” counter(section) ” “;
@@ -355,17 +303,8 @@ counter-increment: section 1;
 counter-reset: section;
 ```
  
-
-⑤“分页媒体”描述性能与外观的属性，控制印刷版本的网页，如分页符的行为。
-
-```
-page-break-after: auto; 常量：always/auto/avoid/left/right
-page-break-before: auto; 常量：always/auto/avoid/left/right
-page-break-inside: auto; 常量：auto/avoid
-```
  
-
-⑥“颜色和背景”描述属性控制背景下的块级元素和颜色的文本内容的组成部分。
+“颜色和背景”描述属性控制背景下的块级元素和颜色的文本内容的组成部分。
 
 ```
 -webkit-background-clip: content; 常量：border/content/padding/text
@@ -374,13 +313,8 @@ page-break-inside: auto; 常量：auto/avoid
 ```
  
 
-⑦ “字型”的具体描述性质的文字字体的选择范围内的一个因素。报告还描述属性用于下载字体定义。
 
-```
-unicode-range: U+00-FF, U+980-9FF;
-```
-
-⑧“文本”描述属性的特定文字样式，间距和自动滚屏。
+“文本”描述属性的特定文字样式，间距和自动滚屏。
 
 ```
 text-shadow: #00FFFC 10px 10px 5px;
@@ -405,7 +339,7 @@ word-wrap: break-word; 常量：break-word/normal
 ```
  
 
-⑨“表格”描述的布局和设计性能表的具体内容。
+“表格”描述的布局和设计性能表的具体内容。
 
 ```
 -webkit-border-horizontal-spacing: 2px;
@@ -418,7 +352,7 @@ word-wrap: break-word; 常量：break-word/normal
 style:dashed,dotted,double,groove,hidden,inset,none,outset,ridge,solid
 ```
 
-⑩“用户界面”描述属性，涉及到用户界面元素在浏览器中，如滚动文字区，滚动条，等等。报告还描述属性，范围以外的网页内容，如光标的标注样式和显示当您按住触摸触摸
+“用户界面”描述属性，涉及到用户界面元素在浏览器中，如滚动文字区，滚动条，等等。报告还描述属性，范围以外的网页内容，如光标的标注样式和显示当您按住触摸触摸
 目标，如在iPhone上的链接。
 
 ```
@@ -456,25 +390,6 @@ rotate(*deg) 转动角度。rotateX 和 rotateY，可以简写为：rotate(* , *
 Skew(*deg) 倾斜角度。skewX 和skewY，可简写为：skew(* , *)
 translate(*,*) 坐标移动。translateX 和translateY，可简写为：translate(* , *)。
 ```
- 
- 
-##利用media query监听
-
-media query相信大部分人已经使用过了。其实javascript可以配合media query这么用：
-
-```js
-var mql = window.matchMedia("(orientation: portrait)");
-mql.addListener(handleOrientationChange);
-handleOrientationChange(mql); 
-function handleOrientationChange(mql) {
-  if (mql.matches) {
-    alert('The device is currently in portrait orientation ')
-  } else {
-    alert('The device is currently in landscape orientation')
-  }}
-```
-
-我个人理解，是借助了media query接口做的事件监听，所以很强大！
 
 ##锁定 viewport
 
@@ -502,37 +417,11 @@ if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)
 ```
  
 
-虽然Javascript是可以在水果设备上运行的，但是用户还是可以禁用。它也会造成客户端刷新和额外的数据传输，所以下面是服务器端侦测和转向：
-
-```js
-if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AGENT'],'iPod')) {
-　　header('Location: http://yoursite.com/iphone');
-　　exit();
-}
-```
-
 ##阻止旋转屏幕时自动调整字体大小
 
 ```css
 html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {-webkit-text-size-adjust:none;}
 ```
- 
-
-##iPhone才识别的CSS
-如果不想设备侦测，可以用CSS媒体查询来专为iPhone/iPod定义样式。
-
-```css
-@media screen and (max-device-width: 480px) {}
-```
-
-##缩小图片
-网站的大图通常宽度都超过480像素，如果用前面的代码限制了缩放，这些图片在iPhone版显示显然会超过屏幕。好在iPhone机能还够，我们可以用CSS让iPhone自动将大图片缩小显示。
-
-```css
-@media screen and (max-device-width: 480px){
-　　img{max-width:100%;height:auto;}
-}
- ```
 
 ##模拟:hover伪类
 因为iPhone并没有鼠标指针，所以没有hover事件。那么CSS :hover伪类就没用了。但是iPhone有Touch事件，onTouchStart 类似 onMouseOver，onTouchEnd 类似 onMouseOut。所以我们可以用它来模拟hover。使用Javascript：
@@ -545,13 +434,6 @@ for(var i = 0; i < myLinks.length; i++){
 }
 ```
 
-然后用CSS增加hover效果：
-
-```css
-a:hover, a.hover { /* 你的hover效果 */ }
-```
-
-这样设计一个链接，感觉可以更像按钮。并且，这个模拟可以用在任何元素上。
 
 ##flexbox布局模板
 
@@ -561,16 +443,6 @@ a:hover, a.hover { /* 你的hover效果 */ }
  
  
  
-##利用高质量图片优化retina屏幕的显示(来自 w3cplus)
- 
- [经典的文章](http://miekd.com/articles/using-css-sprites-to-optimize-your-website-for-retina-displays/ "article5")
-
- [使用CSS3的background-size优化苹果的Retina屏幕的图像显示](http://www.w3cplus.com/css/css-background-size-graphics.html "article5") 
-
- [使用css sprites来优化你的网站在Retina屏幕下显示](http://www.w3cplus.com/css/using-css-sprites-to-optimize-your-website-for-retina-displays.html "article5") 
-  
- [一个案例](http://alexthorpe.com/uncategorized/css-sprites-for-retina-display-devices/683/ "article5") 
- 
  
 ##测试是否支持svg图片
 
@@ -578,30 +450,6 @@ a:hover, a.hover { /* 你的hover效果 */ }
 document.implementation.hasFeature("http:// www.w3.org/TR/SVG11/feature#Image", "1.1")
 ```
 	
-
-##安卓中viewport的width大于device-width时文字无故折行
-
-[Android上当viewport的width大于device-width时出现文字无故折行的解决办法](http://www.iunbug.com/archives/2013/04/23/798.html)
-
-
-
-##active的兼容(来自薛端阳)
-
-今天发现，要让a链接的Css active伪类生效，只需要给这个a链接的touch系列的任意事件touchstart/touchend绑定一个空的匿名方法即可hack成功
-
-```html
-<style>
-	a {color: #000;}
-	a:active {color: #fff;}
-</style>
-<a herf=”asdasd”>asdasd</a>
-<script>
-	var a = document.getElementsByTagName(‘a’);
-	for (var i = 0; i < a.length; i++) {
-		a[i].addEventListener(‘touchstart’, function() {}, false);
-	}
-</script>
-```
 
 ##消除transition闪屏
 
@@ -620,66 +468,7 @@ document.implementation.hasFeature("http:// www.w3.org/TR/SVG11/feature#Image", 
 
 	input:-ms-clear{display:none;}
 	
-##关于ios与os端字体的优化(横竖屏会出现字体加粗不一致等)
 
-[mac下网页中文字体优化](http://blog.sina.com.cn/s/blog_6da647a601011u4v.html "article5")
-
-[UIWebView font is thinner in portrait than landscape](http://stackoverflow.com/questions/3220662/uiwebview-font-is-thinner-in-portrait-than-landscape "article5")
- 
-
-##js事件
-click 事件普遍 300ms 的延迟
-在手机上绑定click 事件，会使得操作有300ms 的延迟，体验并不是很好。
-开发者大多数会使用封装的 tap 事件来代替click 事件，所谓的 tap 事件由 touchstart 事件 + touchmove 判断 + touchend 事件封装组成
-
-##ios点击会慢300ms
-
- [IOS browsers have a 300ms click delay - But developers can bypass it](https://developers.google.com/mobile/articles/fast_buttons?hl=de-DE "article5")
-
- [Eliminate 300ms delay on click events in mobile Safarii](http://stackoverflow.com/questions/12238587/eliminate-300ms-delay-on-click-events-in-mobile-safari "article5")
-
-使用css3动画的时尽量利用3D加速，从而使得动画变得流畅。动画过程中的动画闪白可以通过backface-visibility 隐藏。
-
-```css
--webkit-transform-style: preserve-3d;
--webkit-backface-visibility: hidden;
- ```
-
-##常见的IPHONE 和 Android屏幕参数。
-
-* 设备	分辨率	设备像素比率
-* Android LDPI	320×240	0.75
-* Iphone 3 & Android MDPI	320×480	1
-* Android HDPI	480×800	1.5
-* Iphone 4	960×640	2.0
-
-Iphone 4的一个 CSS 像素实际上表现为一块 2×2 的像素。所以图片像是被放大2倍一样，模糊不清晰。
-
-解决办法：
-
-1、页面引用
-
-```html
-<link rel="stylesheet" media="screen and (-webkit-device-pixel-ratio: 0.75)" href="ldpi.css" />
-<link rel="stylesheet" media="screen and (-webkit-device-pixel-ratio: 1.0)" href="mdpi.css" />
-<link rel="stylesheet" media="screen and (-webkit-device-pixel-ratio: 1.5)" href="hdpi.css" />
-<link rel="stylesheet" media="screen and (-webkit-device-pixel-ratio: 2.0)" href="retina.css" />
-```
- 
-2、CSS文件里
-
-```css
-#header {
-	background:url(mdpi/bg.png);
-}
-
-@media screen and (-webkit-device-pixel-ratio: 1.5) {
-	/*CSS for high-density screens*/
-	#header {
-		background:url(hdpi/bg.png);
-	}
-}
-```
 
 ##ie10的特殊鼠标事件
 
@@ -702,10 +491,6 @@ Iphone 4的一个 CSS 像素实际上表现为一块 2×2 的像素。所以图�
 ```css
 -webkit-user-select:none
 ```
-	
-##动画效果中，使用translate比使用定位性能高
-
-[Why Moving Elements With Translate() Is Better Than Pos:abs Top/left](http://paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/)
 
 ##拿到滚动条
 
@@ -713,30 +498,7 @@ Iphone 4的一个 CSS 像素实际上表现为一块 2×2 的像素。所以图�
 window.scrollY
 window.scrollX
 ```
- 
- 比如要绑定一个touchmove的事件，正常的情况下类似这样(来自呼吸二氧化碳)
- 
- ```js
-$('div').on('touchmove', function(){
-//.….code
-{});
-```
-	
-而如果中间的code需要处理的东西多的话，fps就会下降影响程序顺滑度，而如果改成这样
 
-```js
-$('div').on('touchmove', function() {
-	setTimeout(function() {
-		//.….code
-	}, 0); {});
-```
-	
-把代码放在setTimeout中，会发现程序变快.
-
-
-##android监听返回键
-
-[【Javascript设计模式16】- 享元模式](http://www.alloyteam.com/2012/10/commonly-javascript-design-patterns-flyweight/)
 
 ##关于ios系统中，webapp启动图片在不同设备上的适应性设置
 
@@ -777,17 +539,6 @@ Android web视图,至少在HTC EVO和三星的Galaxy Nexus中，文本输入框�
 
 
 ##JS动态生成的select下拉菜单在Android2.x版本的默认浏览器里不起作用
-
-解决方法删除了```overflow-x:hidden```; 然后在JS生成下来菜单之后focus聚焦，这两步操作之后解决了问题。(来自岛都-小Qi)
-
-参考[HTML <select> control disabled in Android WebView (in emulator)](http://stackoverflow.com/questions/4697908/html-select-control-disabled-in-android-webview-in-emulator)
-
-##andriod上去掉语音输入按钮
-
-```
-input::-webkit-input-speech-button {display: none}
-```
-	
 
 ##ios输入框最佳实践
 
@@ -862,50 +613,6 @@ CSS 3滤镜
 ```css
 -webkit-filter: blur(5px) grayscale (.5) opacity(0.66) hue-rotate(100deg);
 ```
-
-交叉淡变
-
-```css
-background-image: -webkit-cross-fade(url("logo1.png"), url("logo2.png"), 50%);
-```
-
-Safari中的全屏幕
-
-　　除了chrome-less 主屏幕meta标签，现在的iPhone和iPod Touch（而不是在iPad）支持全屏幕模式的窗口。 没有办法强制全屏模式，它需要由用户启动（工具栏上的最后一个图标）。需要引导用户按下屏幕上的全屏图标来激活全屏效果。 可以使用onresize事件检测是否用户切换到全屏幕。
-
-支持requestAnimationFrameAPI
-
-支持image-set,retina屏幕的利器
-
-```css
--webkit-image-set(url(low.png) 1x, url(hi.jpg) 2x)
-```
-
-应用程序缓存限制增加至25MB。
-
-
-Web View（pseudobrowsers，PhoneGap/Cordova应用程序，嵌入式浏览器） 上Javascript运行比Safari慢3.3倍（或者说，Nitro引擎在Safari浏览器是Web应用程序是3.3倍速度）。
-
-autocomplete属性的输入遵循DOM规范
-
-来自DOM4的Mutation Observers已经实现。 您可以使用WebKitMutationObserver构造器捕获DOM的变化
-
-Safari不再总是对用 -webkit-transform:preserve-3d 的元素创建硬件加速
-
-支持window.selection 的Selection API
-
-Canvas更新 ：createImageData有一个参数，现在有两个新的功能做好准备，用webkitGetImageDataHD和webkitPutImageDataHD提供高分辨率图像 。
-
-更新SVG处理器和事件构造函数
-
-
-##IOS7的大更新
-
-[iOS 7 的 Safari 和 HTML5：问题，变化和新 API](http://jinlong.github.io/blog/2013/09/23/safari-ios7-html5-problems-apis-review/#jtss-tsina)
-
-[ios7的一些坑(英文)](http://www.sencha.com/blog/the-html5-scorecard-the-good-the-bad-and-the-ugly-in-ios7 "ios7的一些bug")
-
-[ios7的一些坑2(英文)](http://www.mobilexweb.com/blog/safari-ios7-html5-problems-apis-review "ios7的一些bug")
 
 
 
@@ -1053,7 +760,7 @@ function is_weixn(){
 function is_weixin(){
     if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
             return true;
-    }  
+    }
     return false;
 }
 ```
@@ -1071,58 +778,6 @@ function is_weixin(){
 ###使用zeptojs内嵌到android webview影响正常滚动时
 
 ```<https://github.com/madrobby/zepto/blob/master/src/touch.js>``` 去掉61行,其实就是使用原生的滚动
-
-###iscroll4
-
-```
- iscroll4的几个bug(来自<http://www.mansonchor.com/blog/blog_detail_64.html>内有详细讲解)
- ```
- 
-1.滚动容器点击input框、select等表单元素时没有响应
-
-```
-onBeforeScrollStart: function (e) { e.preventDefault(); }
-```
-
-改为
-
-```
-onBeforeScrollStart: function (e) { var nodeType = e.explicitOriginalTarget © e.explicitOriginalTarget.nodeName.toLowerCase():(e.target © e.target.nodeName.toLowerCase():'');if(nodeType !='select'&& nodeType !='option'&& nodeType !='input'&& nodeType!='textarea') e.preventDefault(); }
-```
-
-2.往iscroll容器内添加内容时，容器闪动的bug
-
-
-源代码的
-
-```
-has3d = 'WebKitCSSMatrix' in window && 'm11' in new WebKitCSSMatrix()
-```
-
-改成
-
-```
-has3d = false
-```
-	
-在配置iscroll时，useTransition设置成false
-
-3.过长的滚动内容，导致卡顿和app直接闪退
-
-1). 不要使用checkDOMChanges。虽然checkDOMChanges很方便，定时检测容器长度是否变化来refresh，但这也意味着你要消耗一个Interval的内存空间
-
-2). 隐藏iscroll滚动条，配置时设置hScrollbar和vScrollbar为false。
-
-3). 不得已的情况下，去掉各种效果，momentum、useTransform、useTransition都设置为false
-
-4.左右滚动时，不能正确响应正文上下拉动
-
-
-iscroll的闪动问题也与渲染有关系，可以参考
-
-[运用webkit绘制渲染页面原理解决iscroll4闪动的问题](http://www.iunbug.com/archives/2012/09/19/411.html "iscroll4")
-
-[iscroll4升级到5要注意的问题](http://blog.csdn.net/gcz564539969/article/details/9156141 "iscroll5")
 
 
 
@@ -1190,14 +845,14 @@ window,html,body{
 
 ```js
 document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {    
+    function onDeviceReady() {
         callFetchContacts();
     }
 function callFetchContacts(){
     var options = new ContactFindOptions();
     options.multiple = true;
     var fields       = ["displayName", "name","phoneNumbers"];
-    navigator.contacts.find(fields, onSuccess, onError,options);  
+    navigator.contacts.find(fields, onSuccess, onError,options);
     }
 ```
 
